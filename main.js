@@ -1,5 +1,9 @@
 'use strict';
 
+const block = document.getElementById('task5');
+
+const originalBlocksStyle = block.style.cssText;
+
 function updateName(){
     const inputName = document.getElementById('name-input');
 
@@ -22,4 +26,34 @@ function updateBio(){
     const bioAtTheMoment = document.getElementById('user-bio');
 
     bioAtTheMoment.innerText = inputBio.value;
+}
+
+function highlightProfile(){
+
+    const buttons = document.querySelectorAll('button');
+
+    block.style.cssText = `
+    margin: 0 auto;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    border: 2px, green, solid;
+    padding : 6px 6px 6px 6px`;
+
+    for(let i of block.children){
+        i.classList.add('user-form-element');
+    }
+
+    for(let i of buttons){
+        i.classList.add('user-form-button');
+    }
+}
+
+function resetProfile(){
+    block.style.cssText = originalBlocksStyle;
+    
+    for(let i of block.children){
+        i.classList.remove('user-form-element', 'user-form-button')
+    }
 }
